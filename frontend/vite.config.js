@@ -13,7 +13,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../dist', // Output dist at root level (next to vercel.json)
+    outDir: 'dist',
     emptyOutDir: true, // Clean old build files
   }
 })
