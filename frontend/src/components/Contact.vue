@@ -11,7 +11,7 @@ const year = new Date().getFullYear()
       <p class="text-xl text-gray-300 mb-8">Jangan ragu untuk terhubung atau bertanya.</p>
 
       <a
-        href="mailto:rayan@example.com"
+        href="mailto:rayanbersabal@gmail.com"
         class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors duration-300 inline-block mb-12"
       >
         Kirim Email
