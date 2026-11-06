@@ -10,6 +10,14 @@ theme: {
 extend: {
 colors: {
       whitesmoke: '#f5f5f5',
+      background: 'var(--color-background)',
+      surface: 'var(--color-surface)',
+      elevated: 'var(--color-elevated)',
+      foreground: 'var(--color-text)',
+      muted: 'var(--color-muted)',
+      border: 'var(--color-border)',
+      accent: 'var(--color-accent)',
+      secondary: 'var(--color-secondary)',
 },
 keyframes: {
 'slide-in-left': { '0%': { transform: 'translateX(-100%)', opacity: '0' }, '100%': { transform:

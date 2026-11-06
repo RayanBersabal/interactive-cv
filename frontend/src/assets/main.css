@@ -13,3 +13,61 @@ transition: all 1s ease-out;
 opacity: 1;
 transform: translateY(0px);
 }
+
+:root {
+  color-scheme: light;
+
+  --color-background: #ecebe6;
+  --color-surface: #f6f5f0;
+  --color-elevated: #dedcd4;
+
+  --color-text: #272b29;
+  --color-muted: #666b67;
+  --color-border: #c9c8c0;
+
+  --color-accent: #c77745;
+  --color-secondary: #657a70;
+}
+
+:root.dark {
+  color-scheme: dark;
+
+  --color-background: #202421;
+  --color-surface: #2b302c;
+  --color-elevated: #383f39;
+
+  --color-text: #eae9e2;
+  --color-muted: #abb2a9;
+  --color-border: #4d554e;
+
+  --color-accent: #e5a16d;
+  --color-secondary: #93aa9d;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
