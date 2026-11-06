@@ -5,13 +5,16 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const isMenuOpen = ref(false)
 const isDark = ref(false)
 
+
 const navItems = [
-  { label: 'About', href: '#profil' },
+  { label: 'Home', href: '#profil' },
+  { label: 'About', href: '#tentang' },
   { label: 'Education', href: '#pendidikan' },
   { label: 'Skills', href: '#skill' },
   { label: 'Work', href: '#proyek' },
   { label: 'Contact', href: '#kontak' },
 ]
+
 
 function syncTheme() {
   isDark.value = document.documentElement.classList.contains('dark')
