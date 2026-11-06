@@ -126,7 +126,7 @@ const profileImage =
       </div>
 
       <!-- Visual panel -->
-      <div class="relative mx-auto w-full max-w-md lg:max-w-none">
+      <div class="relative mx-auto w-full max-w-[380px] lg:max-w-none">
         <div
           class="rounded-xl border border-border
                  bg-surface p-3 shadow-sm sm:p-4"
