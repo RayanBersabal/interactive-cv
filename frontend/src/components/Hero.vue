@@ -8,7 +8,7 @@ const profileImage =
     id="profil"
     aria-labelledby="hero-title"
     class="relative mx-auto max-w-7xl scroll-mt-24
-           px-5 py-16 sm:px-8 md:py-24 lg:px-12 lg:py-28"
+           px-5 py-12 sm:px-8 md:py-16 lg:px-12 lg:py-20"
   >
     <!-- Section metadata -->
     <div
@@ -29,7 +29,7 @@ const profileImage =
 
     <!-- Main layout -->
     <div
-      class="grid items-center gap-12
+      class="grid items-center gap-8
              lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]
              lg:gap-16"
     >
@@ -94,7 +94,23 @@ const profileImage =
                    focus-visible:outline-accent"
           >
             Explore Projects
-            <span aria-hidden="true">↗</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              class="shrink-0 transition-transform duration-200
+                    group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            >
+              <path d="M7 17 17 7" />
+              <path d="M7 7h10v10" />
+            </svg>
           </a>
 
           <a
