@@ -1,4 +1,8 @@
 <script setup>
+import { RouterLink } from 'vue-router'
+defineOptions({
+  name: 'PortfolioHero',
+})
 const profileImage =
   'https://avatars.githubusercontent.com/u/87006289?v=4'
 </script>
@@ -82,20 +86,20 @@ const profileImage =
 
         <!-- Actions -->
         <div class="flex flex-wrap gap-3">
-          <a
-            href="#proyek"
-            class="inline-flex min-h-12 items-center
-                   justify-center gap-2 rounded-md
-                   bg-foreground px-6 py-3
-                   text-sm font-medium text-background
-                   transition-opacity hover:opacity-85
-                   focus-visible:outline-2
-                   focus-visible:outline-offset-4
-                   focus-visible:outline-accent"
+          <RouterLink
+            to="/projects"
+            class="group inline-flex min-h-12 items-center
+                  justify-center gap-2 rounded-md
+                  bg-foreground px-6 py-3
+                  text-sm font-medium text-background
+                  transition-opacity hover:opacity-85
+                  focus-visible:outline-2
+                  focus-visible:outline-offset-4
+                  focus-visible:outline-accent"
           >
             Explore Projects
+
             <svg
-              xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
               viewBox="0 0 24 24"
@@ -111,10 +115,9 @@ const profileImage =
               <path d="M7 17 17 7" />
               <path d="M7 7h10v10" />
             </svg>
-          </a>
-
-          <a
-            href="#kontak"
+          </RouterLink>
+          <RouterLink
+            to="/kontak"
             class="inline-flex min-h-12 items-center
                    justify-center rounded-md
                    border border-border bg-surface
@@ -124,9 +127,9 @@ const profileImage =
                    focus-visible:outline-2
                    focus-visible:outline-offset-4
                    focus-visible:outline-accent"
-          >
+            >
             Get in Touch
-          </a>
+          </RouterLink>
         </div>
 
         <!-- Tech interests -->

@@ -17,7 +17,7 @@ import { education, experience } from '@/data/background.js'
           class="mb-4 font-mono text-xs uppercase
                  tracking-widest text-secondary"
         >
-          04 / Background
+          03 / BACKGROUND
         </p>
 
         <h2
@@ -38,7 +38,7 @@ import { education, experience } from '@/data/background.js'
       <div class="grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)]">
         <div>
           <p class="font-mono text-xs text-secondary">
-            04.1 / EDUCATION
+            03.1 / EDUCATION
           </p>
 
           <h3 class="mt-3 text-xl font-semibold text-foreground">
@@ -117,7 +117,7 @@ import { education, experience } from '@/data/background.js'
         <div class="grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)]">
           <div>
             <p class="font-mono text-xs text-secondary">
-              04.2 / EXPERIENCE
+              03.2 / EXPERIENCE
             </p>
 
             <h3 class="mt-3 text-xl font-semibold text-foreground">

@@ -1,6 +1,5 @@
 
 <script setup>
-import SiteNavbar from '@/components/SiteNavbar.vue'
 import Hero from '@/components/Hero.vue'
 import AboutSection from '@/components/AboutSection.vue'
 import BackgroundSection from '@/components/BackgroundSection.vue'
