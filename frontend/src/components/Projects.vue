@@ -1,6 +1,11 @@
 
 <script setup>
+import { RouterLink } from 'vue-router'
 import { projects } from '@/data/projects.js'
+
+defineOptions({
+  name: 'FeaturedProjects',
+})
 
 const themes = {
   hardware: {
@@ -28,6 +33,10 @@ const themes = {
 function getTheme(name) {
   return themes[name] ?? themes.portfolio
 }
+
+function formatNumber(number) {
+  return String(number).padStart(2, '0')
+}
 </script>
 
 <template>
@@ -41,15 +50,15 @@ function getTheme(name) {
       <!-- Section header -->
       <div
         class="mb-10 flex flex-col justify-between gap-5
-               border-b border-border pb-7 md:mb-12
-               md:flex-row md:items-end"
+               border-b border-border pb-7
+               md:mb-12 md:flex-row md:items-end"
       >
         <div>
           <p
             class="mb-4 font-mono text-xs font-medium
                    uppercase tracking-widest text-secondary"
           >
-            02 / Selected Work
+            05 / SELECTED WORK
           </p>
 
           <h2
@@ -70,7 +79,7 @@ function getTheme(name) {
         </div>
 
         <div class="font-mono text-xs text-muted">
-          SELECTED / {{ String(projects.length).padStart(2, '0') }}
+          SELECTED / {{ formatNumber(projects.length) }}
         </div>
       </div>
 
@@ -81,19 +90,20 @@ function getTheme(name) {
           :key="project.id"
           class="group flex min-w-0 flex-col overflow-hidden
                  rounded-xl border border-border bg-surface
-                 transition-colors hover:border-secondary"
+                 transition-colors duration-200
+                 hover:border-secondary"
         >
           <!-- Project visual -->
           <div
             class="relative flex aspect-[16/9] items-center
-                   justify-center overflow-hidden border-b
-                   border-border"
+                   justify-center overflow-hidden
+                   border-b border-border"
             :style="{
               backgroundColor: getTheme(project.theme).background,
               color: getTheme(project.theme).foreground,
             }"
           >
-            <!-- Decorative engineering grid -->
+            <!-- Engineering grid -->
             <div
               class="pointer-events-none absolute inset-0 opacity-15"
               :style="{
@@ -104,6 +114,7 @@ function getTheme(name) {
               aria-hidden="true"
             ></div>
 
+            <!-- Project visual label -->
             <span
               class="relative font-mono text-5xl font-bold
                      tracking-tighter sm:text-6xl"
@@ -112,16 +123,18 @@ function getTheme(name) {
               {{ project.visual }}
             </span>
 
+            <!-- Project index -->
             <span
-              class="absolute left-4 top-4 rounded border px-2
-                     py-1 font-mono text-[10px] uppercase"
+              class="absolute left-4 top-4 rounded border
+                     px-2 py-1 font-mono text-[10px] uppercase"
               :style="{
                 borderColor: getTheme(project.theme).border,
               }"
             >
-              PROJECT / {{ String(index + 1).padStart(2, '0') }}
+              PROJECT / {{ formatNumber(index + 1) }}
             </span>
 
+            <!-- Category -->
             <span
               class="absolute bottom-4 right-4 font-mono
                      text-[10px] uppercase tracking-wider"
@@ -130,10 +143,10 @@ function getTheme(name) {
             </span>
           </div>
 
-          <!-- Project content -->
+          <!-- Project information -->
           <div class="flex flex-1 flex-col p-5 sm:p-7">
 
-            <!-- Category & status -->
+            <!-- Category and status -->
             <div class="mb-3 flex flex-wrap items-center gap-2">
               <span
                 class="font-mono text-[11px] uppercase
@@ -144,20 +157,32 @@ function getTheme(name) {
 
               <span
                 v-if="project.status"
-                class="rounded border border-border bg-elevated
-                       px-2 py-0.5 text-[10px] font-medium text-muted"
+                class="rounded border border-border
+                       bg-elevated px-2 py-0.5
+                       text-[10px] font-medium text-muted"
               >
                 {{ project.status }}
               </span>
             </div>
 
+            <!-- Title -->
             <h3
               class="text-xl font-semibold tracking-tight
                      text-foreground sm:text-2xl"
             >
-              {{ project.title }}
+              <RouterLink
+                :to="`/projects/${project.id}`"
+                class="transition-colors hover:text-accent
+                       focus-visible:rounded
+                       focus-visible:outline-2
+                       focus-visible:outline-offset-4
+                       focus-visible:outline-accent"
+              >
+                {{ project.title }}
+              </RouterLink>
             </h3>
 
+            <!-- Description -->
             <p
               class="mt-3 flex-1 text-sm leading-relaxed
                      text-muted"
@@ -165,7 +190,7 @@ function getTheme(name) {
               {{ project.description }}
             </p>
 
-            <!-- Technology labels -->
+            <!-- Technologies -->
             <ul
               class="mt-6 flex flex-wrap gap-2"
               :aria-label="`Technologies used for ${project.title}`"
@@ -180,69 +205,129 @@ function getTheme(name) {
               </li>
             </ul>
 
-            <!-- Footer -->
+            <!-- Project footer -->
             <div
-              class="mt-6 flex items-center justify-between
+              class="mt-6 flex flex-wrap items-center
+                     justify-between gap-4
                      border-t border-border pt-5"
             >
+              <!-- Project counter -->
               <span class="font-mono text-[10px] text-muted">
-                {{ String(index + 1).padStart(2, '0') }}
-                / {{ String(projects.length).padStart(2, '0') }}
+                {{ formatNumber(index + 1) }}
+                / {{ formatNumber(projects.length) }}
               </span>
 
-              <a
-                v-if="project.link"
-                :href="project.link"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 text-sm
-                       font-semibold text-foreground
-                       transition-colors hover:text-accent
-                       focus-visible:rounded
-                       focus-visible:outline-2
-                       focus-visible:outline-offset-4
-                       focus-visible:outline-accent"
-                :aria-label="`View ${project.title} repository (opens in new tab)`"
+              <!-- Actions -->
+              <div
+                class="flex flex-wrap items-center
+                       gap-x-5 gap-y-3"
               >
-                View Repository
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                  class="shrink-0 transition-transform duration-200
-                        group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                <!-- Internal detail page -->
+                <RouterLink
+                  :to="`/projects/${project.id}`"
+                  class="group/link inline-flex items-center
+                         gap-2 text-sm font-medium
+                         text-foreground transition-colors
+                         hover:text-accent
+                         focus-visible:rounded
+                         focus-visible:outline-2
+                         focus-visible:outline-offset-4
+                         focus-visible:outline-accent"
+                  :aria-label="`View details for ${project.title}`"
                 >
-                  <path d="M7 17 17 7" />
-                  <path d="M7 7h10v10" />
-                </svg>
-              </a>
+                  View Details
 
-              <span
-                v-else
-                class="font-mono text-xs text-muted"
-              >
-                Documentation pending
-              </span>
+                  <svg
+                    class="h-4 w-4 shrink-0
+                           transition-transform duration-200
+                           group-hover/link:translate-x-0.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </RouterLink>
+
+                <!-- External repository -->
+                <a
+                  v-if="project.link"
+                  :href="project.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group/link inline-flex items-center
+                         gap-2 text-sm font-medium
+                         text-muted transition-colors
+                         hover:text-accent
+                         focus-visible:rounded
+                         focus-visible:outline-2
+                         focus-visible:outline-offset-4
+                         focus-visible:outline-accent"
+                  :aria-label="`View ${project.title} repository (opens in new tab)`"
+                >
+                  Repository
+
+                  <svg
+                    class="h-4 w-4 shrink-0
+                           transition-transform duration-200
+                           group-hover/link:-translate-y-0.5
+                           group-hover/link:translate-x-0.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17 17 7" />
+                    <path d="M7 7h10v10" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </article>
       </div>
 
-      <!-- Future catalog -->
+      <!-- View all projects -->
       <div
-        class="mt-10 flex flex-wrap items-center justify-between
-               gap-3 border-t border-border pt-5"
+        class="mt-10 flex flex-wrap items-center
+               justify-between gap-4
+               border-t border-border pt-6"
       >
-        <p class="font-mono text-xs text-muted">
-          MORE PROJECTS AND DOCUMENTATION TO COME
-        </p>
+        <RouterLink
+          to="/projects"
+          class="group/link inline-flex items-center gap-3
+                 text-sm font-medium text-foreground
+                 transition-colors hover:text-accent
+                 focus-visible:rounded
+                 focus-visible:outline-2
+                 focus-visible:outline-offset-4
+                 focus-visible:outline-accent"
+        >
+          View All Projects
+
+          <svg
+            class="h-4 w-4 transition-transform duration-200
+                   group-hover/link:translate-x-1"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </RouterLink>
 
         <span class="font-mono text-xs text-secondary">
           END / SELECTED WORK

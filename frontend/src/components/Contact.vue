@@ -13,6 +13,9 @@ const socialLinks = [
     external: true,
   },
 ]
+defineOptions({
+  name: 'ContactSection',
+})
 </script>
 
 <template>

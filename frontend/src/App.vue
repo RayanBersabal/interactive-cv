@@ -1,15 +1,26 @@
+
 <script setup>
 import { RouterView } from 'vue-router'
+import SiteNavbar from '@/components/SiteNavbar.vue'
 </script>
 
 <template>
-  <div class="relative min-h-screen bg-background text-foreground font-sans">
-    <!-- SVG Background -->
+  <div
+    class="relative min-h-screen bg-background
+           font-sans text-foreground"
+  >
+    <!-- Global decorative background -->
     <div
-      class="absolute inset-0 w-full h-full z-0 bg-[url('/bg-lines.svg')] bg-cover bg-repeat opacity-30 pointer-events-none"
+      aria-hidden="true"
+      class="pointer-events-none fixed inset-0 z-0
+             bg-[url('/bg-lines.svg')]
+             bg-cover bg-repeat opacity-30"
     ></div>
 
-    <!-- Content wrapper -->
+    <!-- Global navigation -->
+    <SiteNavbar />
+
+    <!-- Routed page content -->
     <div class="relative z-10">
       <RouterView />
     </div>

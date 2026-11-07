@@ -22,7 +22,7 @@ const facts = [
     <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
       <div class="mb-10 border-b border-border pb-7">
         <p class="mb-4 font-mono text-xs uppercase tracking-widest text-secondary">
-          03 / About
+          02 / ABOUT
         </p>
         <h2
           id="about-title"
